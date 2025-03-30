@@ -21,15 +21,16 @@
             <?php foreach ($classes as $class): ?>
                 <option value='<?=$class['class_id']?>'><?=$class['class_name']?></option>
             <?php endforeach;?>
-        </select>    
+        </select> 
+        <br>
+        <button class="sortButton" type="submit">Go</button>   
     </section>
     <section class="sort_radios">
         <h4>Sort by:</h4>
-        <input type="radio" id="price" name="sort" value="price">
-        <label for="price">Price</label>
-        <input type="radio" id="year" name="sort" value="year">
-        <label for="year">Year</label>
-        <button class="sortButton" type="submit">Go</button>
+        <select name="sort" id="sort" onchange="this.form.submit()">
+            <option value="price_desc" <?= isset($_GET['sort']) && $_GET['sort'] == 'price_desc' ? 'selected' : '' ?>>Price (High to Low)</option>
+            <option value="year" <?= isset($_GET['sort']) && $_GET['sort'] == 'year' ? 'selected' : '' ?>>Year (Newest to Oldest)</option>
+        </select>
     </section>
     </form>
 </div>

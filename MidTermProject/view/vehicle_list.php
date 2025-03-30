@@ -22,14 +22,15 @@
             <?php foreach ($classes as $class): ?>
                 <option value='<?=$class['class_id']?>'><?=$class['class_name']?></option>
             <?php endforeach;?>
-        </select>    
+        </select>  
+        <br>
+        <button class="sortButton" type="submit">Go</button>  
     </section>
     <form action="" method="get">
         <label for="sort">Sort by: </label>
         <select name="sort" id="sort" onchange="this.form.submit()">
             <option value="price_desc" <?= isset($_GET['sort']) && $_GET['sort'] == 'price_desc' ? 'selected' : '' ?>>Price (High to Low)</option>
-            <option value="price_asc" <?= isset($_GET['sort']) && $_GET['sort'] == 'price_asc' ? 'selected' : '' ?>>Price (Low to High)</option>
-            <option value="year_desc" <?= isset($_GET['sort']) && $_GET['sort'] == 'year_desc' ? 'selected' : '' ?>>Year (Newest to Oldest)</option>
+            <option value="year" <?= isset($_GET['sort']) && $_GET['sort'] == 'year' ? 'selected' : '' ?>>Year (Newest to Oldest)</option>
         </select>
     </form>
     </form>
