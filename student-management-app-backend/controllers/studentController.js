@@ -1,7 +1,6 @@
 const Student = require('../models/students.js')
 
 const getAllStudents = async (req, res) => {
-    console.log("got students maybe...")
     try {
         const students = await Student.find();
         res.status(200).json(students);
