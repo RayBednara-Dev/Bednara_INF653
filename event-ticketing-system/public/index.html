@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Ticketing System API</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Welcome to Event Ticketing System</h1>
+</header>
+
+<div class="container">
+    <h2 class="header">API Endpoints</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Method</th>
+                <th>Endpoint</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>GET</td>
+                <td>/api/events</td>
+                <td>Return all events</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/api/events/:id</td>
+                <td>Return details of a single event</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/api/events?category=</td>
+                <td>Filter events by category (optional)</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/api/events?date=</td>
+                <td>Filter events by date (optional, e.g., YYYY-MM-DD)</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/api/bookings</td>
+                <td>Return all bookings for the logged-in user</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/api/bookings/:id</td>
+                <td>Return details of a specific booking (only for the user)</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/api/auth/register</td>
+                <td>Register a new user</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/api/auth/login</td>
+                <td>Authenticate a user and return JWT token</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/api/events</td>
+                <td>Create a new event (admin only)</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/api/bookings</td>
+                <td>Book tickets for an event (user only)</td>
+            </tr>
+            <tr>
+                <td>PUT</td>
+                <td>/api/events/:id</td>
+                <td>Update an event (admin only)</td>
+            </tr>
+            <tr>
+                <td>DELETE</td>
+                <td>/api/events/:id</td>
+                <td>Delete an event (admin only)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer class="footer">
+    <p>Event Ticketing System API - Created by Raymond Bednara</p>
+</footer>
+
+</body>
+</html>
