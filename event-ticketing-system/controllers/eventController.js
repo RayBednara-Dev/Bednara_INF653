@@ -13,6 +13,7 @@ exports.getAllEvents = async (req, res) => {
         const parsedDate = new Date(date); 
         const nextDay = new Date(parsedDate.setDate(parsedDate.getDate() + 1));
         filter.date = {
+            //creates a filter that surrounds the date with a full 24 hour period so there is no time conflicts if you're looking at a particular 
           $gte: new Date(date), 
           $lt: nextDay 
         };
@@ -69,13 +70,11 @@ exports.updateEvent = async (req, res) => {
 
 exports.deleteEvent = async (req, res) => {
   try {
-    const event = await Event.findById(req.params.id);
+    const event = await Event.findByIdAndDelete(req.params.id);
     if (!event) return res.status(404).send('Event not found');
     if (event.bookedSeats > 0) return res.status(400).send('Cannot delete event with bookings');
-    
-    await event.remove();
     res.status(200).send('Event deleted');
   } catch (err) {
-    res.status(500).send('Server error');
+    res.status(500).send('Error Deleting Event');
   }
 };
