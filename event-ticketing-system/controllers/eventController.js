@@ -36,9 +36,9 @@ exports.getEventById = async (req, res) => {
 };
 
 exports.createEvent = async (req, res) => {
-  const { title, description, category, venue, date, time, seatCapacity, price } = req.body;
+  const { title, description, category, venue, date, time, seatCapacity, price, bookedSeats } = req.body;
   try {
-    const newEvent = new Event({ title, description, category, venue, date, time, seatCapacity, price });
+    const newEvent = new Event({ title, description, category, venue, date, time, seatCapacity, price, bookedSeats });
     await newEvent.save();
     res.status(201).json(newEvent);
   } catch (err) {
@@ -70,10 +70,14 @@ exports.updateEvent = async (req, res) => {
 
 exports.deleteEvent = async (req, res) => {
   try {
-    const event = await Event.findByIdAndDelete(req.params.id);
+    const event = await Event.findById(req.params.id);
     if (!event) return res.status(404).send('Event not found');
-    if (event.bookedSeats > 0) return res.status(400).send('Cannot delete event with bookings');
-    res.status(200).send('Event deleted');
+    if (event.bookedSeats > 0){
+       return res.status(400).send('Cannot delete event with bookings');
+      } else {
+       await Event.findByIdAndDelete(req.params.id);
+       res.status(200).send('Event deleted');
+      }
   } catch (err) {
     res.status(500).send('Error Deleting Event');
   }
